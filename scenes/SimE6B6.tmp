@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw8vchi3yo7vt"]
+
+[ext_resource type="Script" path="res://scripts/Simulate.gd" id="1_dsplq"]
+
+[node name="Simulate" type="Node2D"]
+script = ExtResource("1_dsplq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MenuButton" type="Button" parent="."]
+offset_left = 147.0
+offset_top = 3.0
+offset_right = 194.0
+offset_bottom = 34.0
+text = "Back"
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 67.0
+offset_top = 83.0
+offset_right = 155.0
+offset_bottom = 138.0
+text = "Start"
+
+[node name="ResultLabel" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 74.0
+offset_right = 50.0
+offset_bottom = 97.0
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_back_button_pressed"]

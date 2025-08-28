@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw8vchi3yo7vt"]
+
+[ext_resource type="Script" path="res://scripts/Simulate.gd" id="1_dsplq"]
+[ext_resource type="Texture2D" uid="uid://cbrtjy3rxbpcg" path="res://assets/kenney_pixel-ui-pack/9-Slice/space.png" id="2_a4is3"]
+
+[node name="Simulate" type="Node2D"]
+script = ExtResource("1_dsplq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MenuButton" type="Button" parent="."]
+offset_left = 474.0
+offset_top = 186.0
+offset_right = 521.0
+offset_bottom = 217.0
+text = "Back"
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 431.0
+offset_top = 238.0
+offset_right = 519.0
+offset_bottom = 293.0
+text = "Start"
+
+[node name="ResultLabel" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 74.0
+offset_right = 50.0
+offset_bottom = 97.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -409.0
+offset_top = -203.0
+offset_right = -236.0
+offset_bottom = -72.0
+texture = ExtResource("2_a4is3")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_back_button_pressed"]

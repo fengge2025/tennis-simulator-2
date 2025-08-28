@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7j6enecxhxwn"]
+
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="1_5apud"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_5apud")
+
+[node name="SimulateButton" type="Button" parent="."]
+offset_left = 36.0
+offset_top = 3.0
+offset_right = 83.0
+offset_bottom = 34.0
+text = "Simulate"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="pressed" from="SimulateButton" to="." method="_on_simulate_button_pressed"]
