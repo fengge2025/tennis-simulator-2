@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://0csemeq2gm31"]
+[gd_scene load_steps=6 format=4 uid="uid://0csemeq2gm31"]
 
 [ext_resource type="Texture2D" uid="uid://c2utw6gbkfr0x" path="res://assets/tile_maps/tennis_court_tile.png" id="1_ehisi"]
 [ext_resource type="PackedScene" uid="uid://cgjbi6xsmsu7" path="res://players/player.tscn" id="2_30r0f"]
+[ext_resource type="PackedScene" uid="uid://cwldr8s3qkewm" path="res://balls/ball.tscn" id="3_v6vkt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfcbq"]
 texture = ExtResource("1_ehisi")
@@ -37,4 +38,10 @@ scale = Vector2(0.2, 0.2)
 territory_x_min = 50.0
 territory_x_max = 150.0
 territory_y_min = 250.0
+territory_y_max = 300.0
+
+[node name="Ball" parent="." instance=ExtResource("3_v6vkt")]
+territory_x_min = 50.0
+territory_x_max = 150.0
+territory_y_min = 50.0
 territory_y_max = 300.0
