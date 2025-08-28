@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8asd2yqpwicn"]
+
+[ext_resource type="PackedScene" uid="uid://cwldr8s3qkewm" path="res://balls/ball.tscn" id="1_b57ny"]
+[ext_resource type="Script" path="res://matches/scripts/match.gd" id="1_ct0g0"]
+[ext_resource type="PackedScene" uid="uid://cgjbi6xsmsu7" path="res://players/player.tscn" id="2_75uyo"]
+[ext_resource type="Script" path="res://matches/scripts/states/match_state_machine.gd" id="4_7cpt0"]
+[ext_resource type="Script" path="res://matches/scripts/states/match_state_away.gd" id="5_07xab"]
+[ext_resource type="Script" path="res://matches/scripts/states/match_state_home.gd" id="6_yqlct"]
+
+[node name="Match" type="Node2D"]
+script = ExtResource("1_ct0g0")
+
+[node name="Ball" parent="." instance=ExtResource("1_b57ny")]
+territory_x_min = 50.0
+territory_x_max = 150.0
+territory_y_min = 50.0
+territory_y_max = 300.0
+
+[node name="PlayerHome" parent="." instance=ExtResource("2_75uyo")]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+territory_x_min = 50.0
+territory_x_max = 150.0
+territory_y_min = 250.0
+territory_y_max = 300.0
+
+[node name="PlayerAway" parent="." instance=ExtResource("2_75uyo")]
+scale = Vector2(0.5, 0.5)
+territory_x_min = 50.0
+territory_x_max = 150.0
+territory_y_min = 50.0
+territory_y_max = 100.0
+
+[node name="MatchStateMachine" type="Node" parent="."]
+script = ExtResource("4_7cpt0")
+
+[node name="MatchStateAway" type="Node" parent="MatchStateMachine"]
+script = ExtResource("5_07xab")
+
+[node name="MatchStateHome" type="Node" parent="MatchStateMachine"]
+script = ExtResource("6_yqlct")

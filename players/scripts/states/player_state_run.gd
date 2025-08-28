@@ -7,6 +7,7 @@ var target_position: Vector2 = Vector2(100, 100)
 var speed: float = 200.0
 
 func enter() -> void:
+	print("player enter run")
 	player.update_animation("run")
 	moving = true
 	
