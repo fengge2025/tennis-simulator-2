@@ -18,17 +18,11 @@ func process(_delta: float) -> State:
 	if waiting:
 		return null
 		
-	var rand_vec = Vector2(
-		randf_range(100, 200),
-		randf_range(100, 200)
-	)
+	var desire_position = player.desire_position()
 	
-	print(rand_vec)
-	
-	player_state_run.target_position = rand_vec
+	player_state_run.target_position = desire_position
 	return player_state_run
 	
 func wait_timer(wait_sec: float) -> void:
-	print(waiting)
 	await get_tree().create_timer(wait_sec).timeout
 	waiting = false
