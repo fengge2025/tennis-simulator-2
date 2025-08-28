@@ -1,0 +1,28 @@
+class_name PlayerStateRun extends PlayerState
+
+@onready var player_state_hit: PlayerStateHit = $"../PlayerStateHit"
+
+var moving: bool = false
+var target_position: Vector2 = Vector2(100, 100)
+var speed: float = 200.0
+
+func enter() -> void:
+	player.update_animation("run")
+	moving = true
+	
+func exit() -> void:
+	moving = false
+
+func process(delta: float) -> State:
+	if moving:
+		var direction = (target_position - player.position).normalized()
+		var distance = player.position.distance_to(target_position)
+
+		if distance > speed * delta:
+			player.position += direction * speed * delta
+		else:
+			player.position = target_position
+			moving = false
+		return null
+	else:
+		return player_state_hit

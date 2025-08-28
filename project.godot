@@ -14,3 +14,10 @@ config/name="Tennis Simulator 2"
 run/main_scene="res://scenes/Menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=512
+window/size/viewport_height=384
+window/size/resizable=false
+window/stretch/mode="viewport"

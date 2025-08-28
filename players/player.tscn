@@ -1,0 +1,109 @@
+[gd_scene load_steps=12 format=3 uid="uid://cgjbi6xsmsu7"]
+
+[ext_resource type="Script" path="res://players/player.gd" id="1_fcb8w"]
+[ext_resource type="Texture2D" uid="uid://ipdqrdvdvdm1" path="res://players/assets/player01.png" id="2_sqnyr"]
+[ext_resource type="Script" path="res://players/scripts/states/player_state_machine.gd" id="3_et8e0"]
+[ext_resource type="Script" path="res://players/scripts/states/player_state_hit.gd" id="4_qpqq5"]
+[ext_resource type="Script" path="res://players/scripts/states/player_state_run.gd" id="5_srlc8"]
+[ext_resource type="Script" path="res://players/scripts/states/player_state_wait.gd" id="6_1clha"]
+
+[sub_resource type="Animation" id="Animation_m32t2"]
+resource_name = "wait"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ysp6h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8impb"]
+resource_name = "hit"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_bbg6n"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_25tfb"]
+_data = {
+"RESET": SubResource("Animation_ysp6h"),
+"hit": SubResource("Animation_8impb"),
+"run": SubResource("Animation_bbg6n"),
+"wait": SubResource("Animation_m32t2")
+}
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_fcb8w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sqnyr")
+hframes = 4
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_25tfb")
+}
+
+[node name="PlayerStateMachine" type="Node" parent="."]
+script = ExtResource("3_et8e0")
+
+[node name="PlayerStateWait" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("6_1clha")
+
+[node name="PlayerStateHit" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("4_qpqq5")
+
+[node name="PlayerStateRun" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_srlc8")
