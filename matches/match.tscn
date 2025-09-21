@@ -11,25 +11,14 @@
 script = ExtResource("1_ct0g0")
 
 [node name="Ball" parent="." instance=ExtResource("1_b57ny")]
-territory_x_min = 50.0
-territory_x_max = 150.0
-territory_y_min = 50.0
-territory_y_max = 300.0
 
 [node name="PlayerHome" parent="." instance=ExtResource("2_75uyo")]
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.5, 0.5)
-territory_x_min = 50.0
-territory_x_max = 150.0
-territory_y_min = 250.0
-territory_y_max = 300.0
 
 [node name="PlayerAway" parent="." instance=ExtResource("2_75uyo")]
 scale = Vector2(0.5, 0.5)
-territory_x_min = 50.0
-territory_x_max = 150.0
-territory_y_min = 50.0
-territory_y_max = 100.0
+home_or_away = "away"
 
 [node name="MatchStateMachine" type="Node" parent="."]
 script = ExtResource("4_7cpt0")

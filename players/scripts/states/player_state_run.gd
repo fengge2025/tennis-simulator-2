@@ -3,7 +3,6 @@ class_name PlayerStateRun extends PlayerState
 @onready var player_state_hit: PlayerStateHit = $"../PlayerStateHit"
 
 var moving: bool = false
-var target_position: Vector2 = Vector2(100, 100)
 var speed: float = 200.0
 
 func enter() -> void:
@@ -16,13 +15,13 @@ func exit() -> void:
 
 func process(delta: float) -> State:
 	if moving:
-		var direction = (target_position - player.position).normalized()
-		var distance = player.position.distance_to(target_position)
+		var direction = (player.target_position - player.position).normalized()
+		var distance = player.position.distance_to(player.target_position)
 
 		if distance > speed * delta:
 			player.position += direction * speed * delta
 		else:
-			player.position = target_position
+			player.position = player.target_position
 			moving = false
 		return null
 	else:

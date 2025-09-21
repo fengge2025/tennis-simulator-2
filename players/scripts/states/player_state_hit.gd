@@ -1,6 +1,6 @@
 class_name PlayerStateHit extends PlayerState
 
-signal hit_finished()
+signal hit_finished(desire_ball_position: Vector2)
 
 @onready var player_state_run: PlayerStateRun = $"../PlayerStateRun"
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
@@ -27,4 +27,4 @@ func process(_delta: float) -> State:
 
 func end_hit(_animation: String) -> void:
 	hitting = false
-	hit_finished.emit()
+	hit_finished.emit(player.hit_desire_position())

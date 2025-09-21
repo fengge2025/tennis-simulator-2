@@ -15,15 +15,6 @@ func enter() -> void:
 func exit() -> void:
 	waiting = false
 	
-#func process(_delta: float) -> State:
-	#if waiting:
-		#return null
-		#
-	#var desire_position = player.desire_position()
-	#
-	#player_state_run.target_position = desire_position
-	#return player_state_run
-	
 func wait_timer(wait_sec: float) -> void:
 	await get_tree().create_timer(wait_sec).timeout
 	waiting = false
